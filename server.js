@@ -30,12 +30,14 @@ const server = http.createServer((req, res) => {
   } else if (myurl.pathname == "/boardReg") {
     res.write(boardReg());
     res.end();
+
   } else if (myurl.pathname == "/boardRegAction") {
     let title = myurl.searchParams.get("title");
     let content = myurl.searchParams.get("content");
     console.log("title", title);
     console.log("content", content);
     res.end("등록완료");
+    
   } else if (myurl.pathname == "/userReg") {
     res.write(userReg());
     res.end();
