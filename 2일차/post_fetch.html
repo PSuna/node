@@ -37,9 +37,7 @@
 
       fetch(url, {method: "post", headers: {"Content-Type" : "application/json"},
                   body: JSON.stringify(data)}) // 여기서 body는 xhr.send() 와 같다.
-      .then(res => res.json())
       .then(res => selectPost());
-      
     }
     
     // post 전체 조회 - get방식
@@ -48,8 +46,8 @@
       let url = "http://localhost:3000/posts";
 
       // ajax 요청을 동기식으로 실행함 => promise
-      fetch(url) // get방식은 생략가능 
-        .then(res => res.json()) // json으로 변환 // return res.json() 과 같은말
+      fetch(url) // get방식은 default값이므로 생략가능 
+        .then(res => res.json()) // json string을 => json.parse으로 변환 // return res.json() 과 같은말 => 소괄호생략
         .then((post) => {
           postlist.innerHTML = "";
           for (let i = 0; i < post.length; i++) {
