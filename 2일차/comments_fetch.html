@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>comments관리</h3>
+  <button type="button" id="btnSelect" onclick="selectComments">목록조회</button>
+  <div id="commentsList"></div>
+  <form>
+    <input id="id" placeholder="id">
+    <input id="body" placeholder="body">
+    <button type="button" id="btnReg">등록</button>
+  </form>
+  <script>
+
+    selectComments(); // 목록조회 함수 호출
+    btnReg.addEventListener("click",postComments); // 등록버튼 클릭시 이벤트
+    commentsList.addEventListener("click",deleteComments); // 그룹이벤트
+
+    // 삭제함수
+    function deleteComments(ev){
+      if(ev.target.nodeName == "BUTTON"){
+        let id = ev.target.getAttribute("data-id");
+        let url = "http://localhost:3000/comments/" + id;
+        
+        fetch(url, {method : "delete"})
+        .then(res => {
+          selectComments(); // 삭제 성공시 목록 조회 함수 호출
+        })
+      }else{
+        alert("삭제버튼을 클릭하세요");
+      }
+    }
+
+    // 등록함수
+    function postComments(){
+      let url = "http://localhost:3000/comments";
+      let data = {id:parseInt(id.value), body:body.value}; 
+
+      fetch(url,{method:"post", headers : {"Content-Type": "application/json"},
+                body: JSON.stringify(data)})
+      .then(res =>{
+        selectComments(); // 등록완료되면 목록조회함수 호출
+      })
+    }
+
+    // 목록조회
+    function selectComments(){
+      let url = "http://localhost:3000/comments";
+      fetch(url) //get방식이므로 생략
+      .then(res => res.json())
+      .then(comments => {
+        commentsList.innerHTML = "";
+        for(let i = 0; i<comments.length; i++){
+          commentsList.innerHTML += `<div>${comments[i].id} ${comments[i].body}
+                                     <button type="button" data-id="${comments[i].id}">삭제</button></div>`
+        }
+      })
+    }
+
+  </script>
+</body>
+</html>
