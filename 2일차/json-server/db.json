@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 33,
+      "title": "test33",
+      "author": "hellonode"
+    },
+    {
+      "id": 23,
+      "title": "fsdf",
+      "author": "aaa"
+    },
+    {
+      "id": 65,
+      "title": "sss",
+      "author": "ffsd"
+    }
+  ],
+  "comments": [
+    {
+      "id": 30,
+      "body": "ccc"
+    },
+    {
+      "id": 40,
+      "body": "ddd"
+    },
+    {
+      "id": 1,
+      "body": "hhhh"
+    }
+  ],
+  "profile": {
+    "name": "kim"
+  }
+}

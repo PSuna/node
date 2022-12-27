@@ -15,7 +15,7 @@ const server = http.createServer((req,res)=>{ // 서버 생성
   }else if(myUrl.pathname == "/todo"){
     // http://127.0.0.1:3000/todo?no=1
     // 배열에서 todoList[1]
-    let no = myUrl.searchParams.get("no");
+    let no = parseInt(myUrl.searchParams.get("no"));
     res.end(JSON.stringify(todoList[no]));
   }
 });
