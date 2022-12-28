@@ -4,8 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-/* const session = require("express-session");
-const fileStore = require("session-file-store")(session); */ // 세션에 관한 export
+const session = require("express-session");
+const fileStore = require("session-file-store")(session); // 세션에 관한 export
 
 const cookieSession = require("cookie-session");
 
@@ -22,18 +22,19 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // post 데이터 파싱할때 필요한것
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // 정적파일
 
-app.use(
+//쿠키
+/* app.use(
   cookieSession({
   name : session,
   keys : "key",
   maxAge: 24*60*60*1000,
   })
-);
+); */
 
-
-/* app.use( // 세션
+//세션
+app.use(
   session({
     secret : "secret key",
     resave: false,
@@ -45,7 +46,7 @@ app.use(
     },
     store : new fileStore(),
   })
-); */
+);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

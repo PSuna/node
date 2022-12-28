@@ -1,7 +1,7 @@
 import express from "express"; 
 //★★ require이 아닌 import를 사용하기 위해선 package.json에 "type" : "module"을 추가해야함
 // import하는 다른 .js 파일들도 require를 모두 import로 바꿔줘야함
-import boardRouter from "./routes/board.js"; //require("파일경로")에선 확장자 생략가능
+import boardRouter from "./routes/board.js"; //require("파일경로")에선 확장자를 생략해야함
 import customerRouter from "./routes/customer.js"; 
 
 const app = express(); // http.createServer()와 같은 역할
@@ -22,11 +22,13 @@ app.get("/login",function(req,res){
   res.send("로그인 완료");
 })
 
+//=============================================================
 // 주소창 : http://localhost:3000/main.html
-app.use(express.static("public")); // 정적 컨텐츠가 모여있는 폴더
+app.use(express.static("public")); // 정적 컨텐츠가 모여있는 폴더 : 이걸통해 바로 접근 가능
 
 // 주소창 : http://localhost:3000/static/main.html
 //app.use("/static",express.static("public")); // 가상경로
+//=============================================================
 
 // 콜백함수를 여러개 넣어줄수있음
 //인수에 함수를 계속 만들어주면됨(pathname,첫밴째핸들러(콜백함수),두번째핸들러(콜백함수)....)

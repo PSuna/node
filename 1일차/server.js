@@ -103,7 +103,7 @@ function boardReg() {
                   </head>
                   <body>
                     <h3>게시글 작성!!~~~~!!!~</h3>
-                    <form action="/boardRegAction">
+                    <form action="/boardRegAction"> 
                       <div>제목
                         <input type="text" name="title"/>
                       </div>

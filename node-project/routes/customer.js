@@ -1,6 +1,7 @@
 import { Router } from "express";
 const route = Router();
 
+// 주소창 : /customer/ 입력하였을때
 route
   .get("/", (req,res)=>{
       res.send("get customer");

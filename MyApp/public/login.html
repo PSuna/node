@@ -7,9 +7,11 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="/users/login" method="post">
-    <input name="email" placeholder="email"> <!-- name 속성으로 서버에 데이터가 넘어감-->
-    <input name="pw" placeholder="password"> <!-- name 속성으로 서버에 데이터가 넘어감-->
+  <!-- 로그인 버튼을 누르면 서버로 데이터가 넘어가고 /users/login 페이지로 이동-->
+  <!-- ★ method는 post 방식으로 등록 -->
+  <form action="/users/login" method="post"> 
+    <input name="email" placeholder="email"> <!-- name속성을 통해 데이터가 서버로 넘어감-->
+    <input name="pw" placeholder="password"> <!-- name속성을 통해 데이터가 서버로 넘어감-->
     <button>로그인</button>
   </form>
 </body>
