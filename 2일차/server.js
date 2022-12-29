@@ -9,7 +9,7 @@ const server = http.createServer((req,res)=>{ // requestListener : 요청이 들
   console.log("searchParam",myurl.searchParams);
 
   if(myurl.pathname.startsWith("/page")){ // startsWith("특정문자열") : 해당문자열이 특정문자열로 시작하는가
-    const pagename = "./template" + myurl.pathname.substring(5) + ".html"; // /page 까지 자르고 그뒤에 파일명
+    const pagename = "./template" + myurl.pathname.substring(5) + ".html"; // /page 까지 자르고 그뒤에 /파일명
     fs.readFile(pagename,"utf8",(err,data)=>{ // 비동기 (파일경로, 인코딩, 콜백함수);
                                               // 파일을 다읽고나면 콜백함수가 실행됨 date : 파일을 read한 내용
       res.end(data);

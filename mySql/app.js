@@ -19,8 +19,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
-app.use(express.json());
+
+// json 형식 폼 요청 들어오면 자동파싱
+// req.body 가 스트링이 아닌 객체로저장됨
+app.use(express.json()); 
 app.use(express.urlencoded({ extended: false }));
+
 //app.use(cookieParser());
 
 //세션
