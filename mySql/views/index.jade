@@ -1,0 +1,7 @@
+extends layout
+<!--html 페이지 만들어줌-->
+block content
+  h1= title
+  p Welcome to #{title}
+  form(action="/users/logout", method="post")
+    button(type="submit") 로그아웃 

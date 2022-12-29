@@ -41,7 +41,7 @@
       let url = "http://localhost:3000/comments";
       let data = {id:parseInt(id.value), body:body.value}; 
 
-      fetch(url,{method:"post", headers : {"Content-Type": "application/json"},
+      fetch(url,{method:"post", headers : { "Content-Type": "application/json" },
                 body: JSON.stringify(data)})
       .then(res =>{
         selectComments(); // 등록완료되면 목록조회함수 호출

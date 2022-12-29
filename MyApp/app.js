@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// 세션에 관한 export
 const session = require("express-session");
-const fileStore = require("session-file-store")(session); // 세션에 관한 export
+const fileStore = require("session-file-store")(session); 
 
 const cookieSession = require("cookie-session");
 
@@ -41,8 +42,8 @@ app.use(
     saveUninitialized:true,
     cookie:{
       httpOnly:true,
-      secure : true,
-      maxAge : 60000,
+      //secure : true, : localhost에선 없어야함(주석처리)
+      maxAge : 60000, // 밀리초 : 1분이 경과되면 세션이 없어짐(세션 유지기간)
     },
     store : new fileStore(),
   })
