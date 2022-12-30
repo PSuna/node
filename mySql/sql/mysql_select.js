@@ -19,7 +19,8 @@ connection.query(sql, function(err, results, fields){ // sql 문에대한 결과
   if(err){ // 에러가 있다면 출력
     console.log(err);
   }
-  console.log(results); // 쿼리문 결과 출력
+  console.log(results); // 쿼리문 결과 출력 // results : json 객체 구조임
+  // res.json(results)는 res.send(results) 와같음
 });
 
 connection.end(); // DB접속 종료

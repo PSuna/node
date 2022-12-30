@@ -81,16 +81,12 @@ function customerDelete(){
 }
 
 
-
-
-
  // 수정
 function customerPut(){
   updbtn.addEventListener("click",function(){
    
     // id의 input 태그는 hidden이므로 안보이지만 단건조회시 input태그의 value값은 들어가있음
-    // value 타입은 문자열이므로 숫자 타입으로 변경해야함
-    let id = parseInt(userid.value);
+    let id = userid.value;
     
     let data = { // 클라이언트가 수정한 데이터들을 받아옴
                 name: username.value, 
@@ -104,9 +100,19 @@ function customerPut(){
                           method : "PUT", 
                           headers : {
                             "Content-type":"application/json"}, 
-                          body:JSON.stringify(data)}) // json(스트링)형태
-      .then(() => {
-        selectAll();
-      });
+                          body:JSON.stringify(data) // json(스트링)형태
+                         }) 
+      .then(res => res.json())
+      .then(res => {
+        if(res.result == true){
+          alert("수정완료");
+          selectAll();
+        }else{
+          alert("수정실패");
+        }
+      })
+      .catch(()=>{
+        alert("수정실패");
+      }); // 실행하다 에러가 나면 여기로 넘어옴
   })
 }

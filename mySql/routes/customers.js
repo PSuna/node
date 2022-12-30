@@ -41,11 +41,11 @@ router.post("/",(req,res)=>{
   // pool.query(sql, 보낼 data , 콜백함수)
   // sql 문에대한 결과가 results에 저장됨
   // 여기서 req.body는 json형태가 파싱된거임
-  pool.query(sql, req.body, function(err, results, fields){ 
+  pool.query(sql, req.body, function(err, results, fields){  // 여기서 results의 형태는 object임
     if(err){ // 에러가 있다면 출력
       console.log(err);
     }
-    res.json(results); // json(스트링) 형태로 보냄 // json (스트링) => "{ }"
+    res.json(results); // results를 json(스트링) 형태로 보냄 // json (스트링) => "{ }"
   });
 
 });
@@ -64,10 +64,20 @@ router.put("/:id",(req,res)=>{
   pool.query(sql, data ,function(err, results, fields){ 
     if(err){ // 에러가 있다면 출력
       console.log(err);
+      throw err; // 에러 던짐
     }
-    res.statusCode=200;
-    res.end();
-    //res.json(results[0]); // 쿼리문 결과 출력
+
+    /* res.statusCode=200;
+    res.end(); */
+
+    let resultData = {}
+    if(results.changedRows > 0){ // 수정된게 있다면
+      resultData.result = true;
+      resultData.data = req.body;
+    }else{
+      resultData.result = false;
+    }
+    res.send(resultData); // 쿼리문 결과 출력
   });
 
 });

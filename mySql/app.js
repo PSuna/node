@@ -4,15 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//추가할 부분 =======================================================
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var customersRouter = require('./routes/customers');
+var booksRouter = require('./routes/books');
+//==================================================================
 
 // 세션에 관한 export
 const session = require("express-session");
 const fileStore = require("session-file-store")(session); 
 
-var app = express();
+var app = express(); //createServer() 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,7 +24,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 
 // json 형식 폼 요청 들어오면 자동파싱
-// req.body 가 스트링이 아닌 객체로저장됨
+// express.urlencoded()을 통해 req.body가 스트링이 아닌 객체로저장됨
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: false }));
 
@@ -44,9 +47,12 @@ app.use(
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+//라우터 추가할부분=================================================
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/customers', customersRouter);
+app.use('/books',booksRouter);
+//=================================================================
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
