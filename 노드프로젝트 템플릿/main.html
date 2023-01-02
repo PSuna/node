@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>도서 리뷰 게시판</title>
+  <style>
+    #container{
+      width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #title{
+      background-color: #e2e2e2;
+    }
+    #btn_login{
+      float: right;
+    }
+    #menuBar ul{
+      background-color: #e2e2e2;
+    }
+    #menuBar li{
+      list-style: none;
+      display: inline-block;
+      margin-left: 50px;
+    }
+    #menuBar a{
+      list-style: none;
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+    section{
+      float: none;
+      margin-top: 30px;
+    }
+    section li{
+      list-style: none;
+      display: inline-block;
+    }
+    section a{
+      width: 200px;
+      height: 300px;
+    }
+    footer{
+      background-color: #e2e2e2;
+    }
+  </style>
+  <script src="./javascripts/longin.js"></script>
+</head>
+<body>
+  <div id="container">
+    <header> <!--헤더-->
+      <h1 id="title">도서 리뷰 게시판</h1>
+      <a href="./login.html"><button id="btn_login" type="button">로그인</button></a>
+
+      <nav id="menuBar"> <!--메뉴바-->
+        <ul>
+          <li><a href="#">인기도서</a></li>
+          <li><a href="#">도서 서평</a></li>
+          <li><a href="#">독서 챌린지</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section> <!--세션-->
+      <p>▶ 이달의 인기도서</p>
+      <ul>
+        <li><img src="#" alt="책사진1"></li>
+        <li><img src="#" alt="책사진2"></li>
+        <li><img src="#" alt="책사진3"></li>
+      </ul>
+    </section>
+
+    <footer> <!--풋터-->
+      <p>예담직업전문학교</p>
+      <p>Dev. 박선아</p>
+    </footer>
+  </div>
+</body>
+</html>

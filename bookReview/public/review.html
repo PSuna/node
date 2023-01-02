@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>도서리뷰게시판</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="./stylesheets/form.css" rel="stylesheet" />
+  <style>
+    body {
+      width: 80%;
+      margin: auto;
+    }
+    #container{
+      text-align: center;
+    }
+    section{
+      margin-top: 30px;
+    }
+    #search_form ul{
+      padding: 0px;
+      margin-top: 30px;
+    }
+    #search_form li{
+      list-style: none;
+      display: inline-block;
+    }
+    #search_form input{
+      width: 500px;
+      height: 40px;
+    }
+    .width_height{
+      width: 100px;
+      height: 40px;
+    }
+    table{
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    table thead{
+      background-color: #e2e2e2;
+    }
+    table th, td{
+	    border:1px solid gray;
+      text-align:center;
+      padding:5px;
+    }
+    #btnSearch{
+      padding: 0px;
+    }
+    #btnWritePost{
+      float: right;
+      margin: 0 10px 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="index.html">도서리뷰게시판</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="popularBook.html">인기도서</a></li>
+            <li class="nav-item"><a class="nav-link" href="#!">도서 서평</a></li>
+            <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Product section-->
+  <section>
+    <div id="container">
+      <h1>도서 서평</h1>
+    <form action="#" id="search_form">
+      <ul>
+        <li>
+          <select class="width_height" name="category" id="category">
+            <option value="novel">소설</option>
+            <option value="economy">경제</option>
+            <option value="human">인문학</option>
+            <option value="developement">자기개발</option>
+          </select>
+        </li>
+        <li>
+          <input type="text" id="search" name="search" placeholder="찾을 도서 제목을 입력하세요">
+        </li>
+        <li>
+          <button class="btn btn-outline-dark flex-shrink-0 width_height" id="btnSearch">찾기</button>
+        </li>
+      </ul>
+      <a href="reviewInput.html"><button id="btnWritePost" class="btn btn-outline-dark flex-shrink-0">게시글등록</button></a>
+    </form>
+  </section>
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>책제목</th>
+          <th>작성자</th>
+          <th>별점</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>1</td>
+        <td>강아지똥</td>
+        <td>박선아</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>예제</td>
+        <td>예제</td>
+        <td>예제</td>
+        <td>예제</td>
+      </tr>
+      <tr>
+        <td>예제</td>
+        <td>예제</td>
+        <td>예제</td>
+        <td>예제</td>
+      </tr>
+    </table>
+  </section>
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Suna Website 2023</p>
+    </div>
+    </div>
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="./javascripts/form.js"></script>
+</body>
+</html>

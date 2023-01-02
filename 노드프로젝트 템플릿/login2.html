@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <style>
+    #container{
+      width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h1 {
+      background-color: #e2e2e2;
+    }
+    footer{
+      background-color: #e2e2e2;
+    }
+    ul li{
+      list-style: none;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    ul label{
+      width: 100px;
+      display: inline-block;
+    }
+    ul button{
+      width: 310px;
+      height: 50px;
+      background-color: #77767c;
+      border : 0px;
+      color: white;
+    }
+    ul input{
+      width: 200px;
+      height: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <header> <!--헤더-->
+      <h1>로그인</h1>
+    </header>
+  
+    <section> <!--세션-->
+    <form action="#" method="POST"> <!--Post방식 등록-->
+      <fieldset>
+          <ul>
+            <li>
+              <label>아이디</label><input type="text" id="userId" name="userId" placeholder="아이디">
+            </li>
+            <li>
+              <label>비밀번호</label><input type="password" id="userPw" name="userPw" placeholder="비밀번호">
+            </li>
+            <li>
+              <button type="submit" id="btn_login_submit">로그인</button>
+            </li>
+          </ul>
+        </fieldset>
+    </form>
+    <p>아이디가 없으신가요?<br>
+       그렇다면 <a href="signUp.html">회원가입</a>을 눌러주세요.</p>
+    </section>
+  
+    <footer> <!--풋터-->
+      <p>예담직업전문학교</p>
+      <p>Dev. 박선아</p>
+    </footer>
+</body>
+</html>

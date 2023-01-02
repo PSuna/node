@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>도서리뷰게시판</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="./stylesheets/form.css" rel="stylesheet" />
+  <style>
+    body {
+      width: 80%;
+      margin: auto;
+    }
+    #container {
+      text-align: center;
+      width: 100%;
+    }
+
+    section {
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    #search_form ul {
+      padding: 0px;
+      margin-top: 30px;
+    }
+
+    #search_form li {
+      list-style: none;
+      display: inline-block;
+    }
+
+    #search_form input {
+      width: 500px;
+      height: 40px;
+    }
+
+    .width_height {
+      width: 100px;
+      height: 40px;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-bottom: 10px;
+      width: 80%;
+    }
+
+    table thead {
+      background-color: #e2e2e2;
+    }
+
+    table th,
+    td {
+      border: 1px solid gray;
+      text-align: center;
+      padding: 5px;
+    }
+
+    #btnSearch {
+      padding: 0px;
+    }
+
+    #btnWritePost {
+      float: right;
+      margin: 0 10px 10px 0;
+    }
+
+    .flex_class {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    #picture_div {
+      width: 20%;
+      height: 204px;
+      margin-right: 5px;
+    }
+
+    #picture_div{
+      border: 1px solid black;
+    }
+
+    #bookContent{
+      margin-top: 5px;
+      width: 100%;
+    }
+
+    section button{
+      margin : 5px;
+      width: 100px;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="index.html">도서리뷰게시판</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="popularBook.html">인기도서</a></li>
+            <li class="nav-item"><a class="nav-link" href="#!">도서 서평</a></li>
+            <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Product section-->
+  <section>
+    <div id="container">
+      <h1>도서 서평 - 게시글 작성</h1>
+      <form action="#" id="search_form">
+        <div class="flex_class">
+          <div id="picture_div">
+            <input type="file" name="book_picture" id="book_picture">
+          </div>
+            <table>
+              <tr>
+                <th>카테고리</th>
+                <td>
+                  <select class="width_height" name="category" id="category" style="width: 100%; border: 0;">
+                    <option value="novel">소설</option>
+                    <option value="economy">경제</option>
+                    <option value="human">인문학</option>
+                    <option value="developement">자기개발</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>도서명</th>
+                <td><input type="text" name="text" id="bookTitle" name ="bookTitle" style="width: 100%; border: 0;"></td>
+              </tr>
+              <tr>
+                <th>저자</th>
+                <td><input type="text" name="text" id="bookWriter" name="bookWriter" style="width: 100%; border: 0;"></td>
+              </tr>
+              <tr>
+                <th>별점</th>
+                <td><input type="text" name="text" id="bookGood" name="bookGood" style="width: 100%; border: 0;"></td>
+              </tr>
+            </table>
+        </div>
+        <textarea id="bookContent" cols="30" rows="10" placeholder="내용을 입력해주세요"></textarea>
+        <button class="btn btn-outline-dark flex-shrink-0">취소</button>
+        <button class="btn btn-outline-dark flex-shrink-0">등록</button>
+      </form>
+  </section>
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Suna Website 2023</p>
+    </div>
+  </div>
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="./javascripts/form.js"></script>
+</body>
+
+</html>
