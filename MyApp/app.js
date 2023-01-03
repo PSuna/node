@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 // 세션에 관한 export
 const session = require("express-session");
-const fileStore = require("session-file-store")(session); 
+const fileStore = require("session-file-store")(session);  // 메모리에 저장할거면 빼도됨
 
 const cookieSession = require("cookie-session");
 
@@ -39,10 +39,10 @@ app.use(
   session({
     secret : "secret key",
     resave: false,
-    saveUninitialized:true,
+    saveUninitialized:true, //빈값이어도 하나의 쿠키가 생성됨
     cookie:{
-      httpOnly:true,
-      //secure : true, : localhost에선 없어야함(주석처리)
+      httpOnly:true, // 로컬에서 접근못하게 막아놓음
+      //secure : true, : localhost에선 없어야함(주석처리), http프로토콜에서만 사용가능
       maxAge : 60000, // 밀리초 : 1분이 경과되면 세션이 없어짐(세션 유지기간)
     },
     store : new fileStore(),

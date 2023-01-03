@@ -1,8 +1,8 @@
  /* main.js */
 let books = [];
-
 //공공데이터 포털 API : XML형식
 const url = 'http://api.kcisa.kr/openapi/service/rest/meta13/getNLSF0401?serviceKey=d2252ebd-bfd4-44d8-b005-ff9a8878b9a8&numOfRows=10&pageNo=1'; /*URL*/
+
 fetch(url) // get방식 조회
  .then(res => res.text()) //text로 가져옴
  .then(res => {
@@ -51,5 +51,3 @@ fetch(url) // get방식 조회
               </div>`
   return html;
 }
-
-

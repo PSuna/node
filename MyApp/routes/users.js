@@ -3,6 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) { /* /users/ */
+  console.log(req.session.username); // index.js에서 넣은 세션정보를 읽어내기
   res.send('respond with a resource');
 });
 

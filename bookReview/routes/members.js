@@ -2,7 +2,7 @@ var express = require('express');
 const pool = require('../sql/pool');
 var router = express.Router();
 
-//등록
+//회원가입
 router.post("/",(req,res)=>{
   let sql = "insert into members set ?";
   // pool.query(sql, 보낼 data , 콜백함수)
@@ -12,10 +12,7 @@ router.post("/",(req,res)=>{
     if(err){ // 에러가 있다면 출력
       console.log(err);
     }
-    
-    //res.render("main",{ title: 'Express' }); // 화면에 그려줌 ("파일명",{넘길값}) , 만들어진 화면을 클라이언트에게 넘겨줌
-    res.json(results); // results를 json(스트링) 형태로 보냄 // json (스트링) => "{ }"
-
+    res.json(results);
   });
 
 });
