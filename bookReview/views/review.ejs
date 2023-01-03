@@ -37,7 +37,6 @@
       height: 40px;
     }
     table{
-      border-collapse: collapse;
       width: 100%;
       margin-bottom: 20px;
     }
@@ -45,7 +44,7 @@
       background-color: #e2e2e2;
     }
     table th, td{
-	    border:1px solid gray;
+	    border-bottom:1px solid gray;
       text-align:center;
       padding:5px;
     }
@@ -55,6 +54,10 @@
     #btnWritePost{
       float: right;
       margin: 0 10px 10px 0;
+    }
+    tbody a{
+      text-decoration: none;
+      color: black;
     }
   </style>
 </head>
@@ -70,20 +73,19 @@
             class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="main.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="popularBook.html">인기도서</a></li>
-            <li class="nav-item"><a class="nav-link" href="review.html">도서 서평</a></li>
+            <li class="nav-item"><a class="nav-link" href="/reviews">도서 서평</a></li>
             <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/myPage">MyPage</a></li>
           </ul>
-        </div>
-        <form class="d-flex">
-          <% if(session.logined){%>
-            <button class="btn btn-outline-dark" type="button" id="btnHomeLogout">로그아웃</button>
+          <form class="d-flex">
+            <% if(session.logined){%>
+                <span class ="nav-link">환영합니다. <%=session.userId%>님</span><button class="btn btn-outline-dark" type="button" id="btnHomeLogout">로그아웃</button>
             <%}else{%>
-              <a href="./login.html"><button class="btn btn-outline-dark" type="button" id="btnHomeLogin">로그인</button></a>
-              <%}%>
-              </a>
-        </form>
+                <a href="./login.html"><button class="btn btn-outline-dark" type="button" id="btnHomeLogin">로그인</button></a>
+            <%}%>
+          </form>
+        </div>
       </div>
     </nav>
   </header>
@@ -95,10 +97,10 @@
       <ul>
         <li>
           <select class="width_height" name="category" id="category">
-            <option value="novel">소설</option>
-            <option value="economy">경제</option>
-            <option value="human">인문학</option>
-            <option value="developement">자기개발</option>
+            <option value="소설">소설</option>
+            <option value="경제">경제</option>
+            <option value="인문학">인문학</option>
+            <option value="자기개발">자기개발</option>
           </select>
         </li>
         <li>
@@ -116,29 +118,23 @@
       <thead>
         <tr>
           <th>No.</th>
+          <th>카테고리</th>
           <th>책제목</th>
-          <th>작성자</th>
+          <th>작성자(ID)</th>
           <th>별점</th>
         </tr>
       </thead>
-      <tr id="tr_list">
-        <td>1</td>
-        <td>강아지똥</td>
-        <td>박선아</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>예제</td>
-        <td>예제</td>
-        <td>예제</td>
-        <td>예제</td>
-      </tr>
-      <tr>
-        <td>예제</td>
-        <td>예제</td>
-        <td>예제</td>
-        <td>예제</td>
-      </tr>
+      <tbody>
+     <%for(let i = 0; i<reviews.length; i++){%>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><%= reviews[i].category %></td>
+            <td><a href="/reviews/<%= reviews[i].no%>"><%= reviews[i].bookName %></a></td>
+            <td><%= reviews[i].userId %></td>
+            <td><%= reviews[i].score %></td>
+          </tr>
+       <% } %>
+      </tbody>
     </table>
   </section>
   <footer class="py-5 bg-dark">
@@ -150,6 +146,6 @@
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
-  <script src="../public/javascripts/client_reviews.js"></script>
+  <script src="./javascripts/client_reviews.js"></script>
 </body>
 </html>

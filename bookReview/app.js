@@ -13,7 +13,8 @@ var membersRouter = require('./routes/members');
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');  
 var reviewsRouter = require('./routes/reviews');  
-var booksRouter = require('./routes/books');  
+var reviewPostRouter = require('./routes/reviewPost'); 
+var myPageRouter = require('./routes/myPage'); 
 
 var app = express();
 
@@ -36,7 +37,7 @@ app.use(
     cookie:{
       httpOnly:true, // 로컬에서 접근못하게 막아놓음
       //secure : true, : localhost에선 없어야함(주석처리), http프로토콜에서만 사용가능
-      maxAge : 60000, // 밀리초 : 1분이 경과되면 세션이 없어짐(세션 유지기간)
+      maxAge : 10*60000, // 밀리초 : 1분이 경과되면 세션이 없어짐(세션 유지기간)
     },
     //store : new fileStore(), // 필요없으면 주석처리(없으면 기본적으로 메모리에 저장됨)
   })
@@ -49,7 +50,8 @@ app.use('/members', membersRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);  
 app.use('/reviews', reviewsRouter);
-app.use('/books', booksRouter);
+app.use('/reviewPost', reviewPostRouter);
+app.use('/myPage', myPageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

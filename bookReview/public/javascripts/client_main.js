@@ -14,7 +14,7 @@ fetch(url) // get방식 조회
   let write = xmlDoc.getElementsByTagName("rights"); // 저자
   let description = xmlDoc.getElementsByTagName("description"); // 줄거리
 
-  for(let i=0; i<count.length; i++){
+  for(let i=0; i<count.length; i++){ // 파싱한걸 객체로 만들어서 넣어줌
     books.push({
                 img: img[i].innerHTML, 
                 title: title[i].innerHTML, 
