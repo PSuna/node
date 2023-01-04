@@ -44,9 +44,12 @@
       background-color: #e2e2e2;
     }
     table th, td{
-	    border-bottom:1px solid gray;
+	    
       text-align:center;
       padding:5px;
+    }
+    table tr{
+       border-bottom:1px solid gray;
     }
     #btnSearch{
       padding: 0px;
@@ -73,10 +76,12 @@
             class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item"><a class="nav-link" href="popularBook.html">인기도서</a></li>
+            <li class="nav-item"><a class="nav-link" href="/popular">Best도서</a></li>
             <li class="nav-item"><a class="nav-link" href="/reviews">도서 서평</a></li>
             <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/myPage">MyPage</a></li>
+            <% if(session.logined){%>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/myPage">MyPage</a></li>
+            <%}%>
           </ul>
           <form class="d-flex">
             <% if(session.logined){%>
@@ -131,7 +136,11 @@
             <td><%= reviews[i].category %></td>
             <td><a href="/reviews/<%= reviews[i].no%>"><%= reviews[i].bookName %></a></td>
             <td><%= reviews[i].userId %></td>
-            <td><%= reviews[i].score %></td>
+            <td>
+              <%for(let j=0; j<reviews[i].score; j++ ){ %>
+              <span>★</span>
+              <%}%>
+            </td>
           </tr>
        <% } %>
       </tbody>

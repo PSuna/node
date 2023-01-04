@@ -12,7 +12,7 @@
   <!-- Bootstrap icons-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="./stylesheets/form.css" rel="stylesheet" />
+  <link href="/stylesheets/form.css" rel="stylesheet" />
   <style>
     #container {
       text-align: center;
@@ -54,11 +54,13 @@
       background-color: #e2e2e2;
     }
 
-    table th,
-    td {
+    table th,td {
       border: 1px solid gray;
       text-align: center;
       padding: 5px;
+    }
+    table th{
+      background-color: #e2e2e2;
     }
 
     #btnSearch {
@@ -85,6 +87,10 @@
     #picture_div{
       border: 1px solid black;
     }
+    #picture_div img{
+      width: 100%;
+      height: 204px;
+    }
 
     #bookContent{
       margin-top: 5px;
@@ -96,6 +102,11 @@
       width: 100px;
       padding: 20px;
       border-radius: 20px;
+    }
+    #preview{
+      width: 100%;
+      display: inline-block;
+      height: 165px;
     }
 
   </style>
@@ -112,11 +123,21 @@
             class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item"><a class="nav-link" href="popularBook.html">인기도서</a></li>
+            <li class="nav-item"><a class="nav-link" href="/popular">Best도서</a></li>
             <li class="nav-item"><a class="nav-link" href="/reviews">도서 서평</a></li>
             <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/main">MyPage</a></li>
+            <% if(session.logined){%>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/myPage">MyPage</a></li>
+            <%}%>
           </ul>
+          <form class="d-flex">
+            <% if(session.logined){%>
+              <span class="nav-link">환영합니다. <%=session.userId%>님</span><button class="btn btn-outline-dark" type="button"
+                id="btnHomeLogout">로그아웃</button>
+              <%}else{%>
+                <a href="./login.html"><button class="btn btn-outline-dark" type="button" id="btnHomeLogin">로그인</button></a>
+                <%}%>
+          </form>
         </div>
       </div>
     </nav>
@@ -128,8 +149,9 @@
       <form action="#" id="search_form">
         <div class="flex_class">
           <div id="picture_div">
-            <input type="file" name="book_picture" id="book_picture" value="<%=reviews.picture%>">
-            
+            <!-- <input onchange="readURL(this);" type="file"> -->
+            <input id="book_picture" type="hidden" value="<%=reviews.picture%>" name="book_picture">
+            <img src="<%=reviews.picture%>"/>
           </div>
             <table>
               <tr>
@@ -164,6 +186,7 @@
               </tr>
               <tr>
                 <th>도서명</th>
+                <input value="<%=reviews.no%>" type="hidden" id="bookNo" name="bookNo">
                 <td><input value="<%=reviews.bookName%>" type="text" name="text" id="bookTitle" name ="bookTitle" style="width: 100%; border: 0;"></td>
               </tr>
               <tr>
@@ -209,9 +232,9 @@
             </table>
         </div>
         <textarea id="bookContent" cols="30" rows="10" placeholder="내용을 입력해주세요"><%=reviews.content%></textarea>
-        <button class="btn btn-outline-dark flex-shrink-0" id="btnCancel">취소</button>
-        <button class="btn btn-outline-dark flex-shrink-0" id="btnDelete">삭제</button>
-        <button class="btn btn-outline-dark flex-shrink-0" id="btnUpdate">수정</button>
+        <button class="btn btn-outline-dark flex-shrink-0" onclick="history.back()" id="btnCancel" type="button">취소</button>
+        <button class="btn btn-outline-dark flex-shrink-0" id="btnDelete" type="button">삭제</button>
+        <button class="btn btn-outline-dark flex-shrink-0" id="btnUpdate" type="button">수정</button>
       </form>
   </section>
   <footer class="py-5 bg-dark">
@@ -223,7 +246,6 @@
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
-  <script src="./javascripts/client_update.js"></script>
+  <script src="/javascripts/client_update.js"></script>
 </body>
-
 </html>

@@ -2,6 +2,17 @@
 let books = [];
 //공공데이터 포털 API : XML형식
 const url = 'http://api.kcisa.kr/openapi/service/rest/meta13/getNLSF0401?serviceKey=d2252ebd-bfd4-44d8-b005-ff9a8878b9a8&numOfRows=10&pageNo=1'; /*URL*/
+const post_url = "/main"
+
+function post_data(books){ // DB에 저장하는 함수
+  fetch(post_url, { // 공공데이터 포털에서 받은 정보를 DB에 저장
+                    method : "POST",
+                    headers : {
+                              "Content-type":"application/json"
+                              },
+                    body:JSON.stringify(books)}) // json형태(string)여야함
+  .then(res=>{});
+  }
 
 fetch(url) // get방식 조회
  .then(res => res.text()) //text로 가져옴
@@ -16,7 +27,8 @@ fetch(url) // get방식 조회
 
   for(let i=0; i<count.length; i++){ // 파싱한걸 객체로 만들어서 넣어줌
     books.push({
-                img: img[i].innerHTML, 
+                no: i+1,
+                img: img[i].innerHTML,
                 title: title[i].innerHTML, 
                 write: write[i].innerHTML, 
                 description : description[i].innerHTML
@@ -25,6 +37,7 @@ fetch(url) // get방식 조회
 
   for(let i = 0 ; i<books.length-1; i++){ //10개있지만 미관상 9개만
     popular_div.innerHTML += popular_html(books[i]);
+    post_data(books[i]); // DB에 저장
   }
  })
 
@@ -45,7 +58,7 @@ fetch(url) // get방식 조회
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">자세히보기</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/main/${books.no}">자세히보기</a></div>
                     </div>
                 </div>
               </div>`

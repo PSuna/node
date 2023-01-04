@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     if(err){ // 에러가 있다면 출력
       console.log(err);
     }
-    console.log(results);
+    //console.log(results);
     res.render("review",{session:req.session, reviews : results});
   });
 });
@@ -22,7 +22,7 @@ router.get('/:no', function(req, res, next) {
     if(err){ // 에러가 있다면 출력
       console.log(err);
     }
-    console.log(results);
+    //console.log(results);
     res.render("reviewInfo",{session:req.session, reviews : results[0]});
   });
 });

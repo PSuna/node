@@ -3,8 +3,10 @@ insert_review(); // 책 리뷰 정보 추가
 
 function insert_review(){ // 책 리뷰 정보 추가
   post_review.addEventListener("click",function(){
+      let path = document.getElementById('book_picture').files[0].name;
+      //console.log(typeof path);
       let data = {
-                  picture: book_picture.value,
+                  picture: "/images/"+ path,
                   category: category.value,
                   bookName: bookTitle.value,
                   writer: bookWriter.value,

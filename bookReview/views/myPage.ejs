@@ -52,11 +52,12 @@
       background-color: #e2e2e2;
     }
 
-    table th,
-    td {
-      border: 1px solid gray;
+    table th,td {
       text-align: center;
       padding: 5px;
+    }
+    table tr{
+       border-bottom:1px solid gray;
     }
 
     #btnSearch {
@@ -66,6 +67,10 @@
     #btnWritePost {
       float: right;
       margin: 0 10px 10px 0;
+    }
+    tbody a{
+      text-decoration: none;
+      color: black;
     }
   </style>
 </head>
@@ -81,10 +86,12 @@
             class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item"><a class="nav-link" href="popularBook.html">인기도서</a></li>
+            <li class="nav-item"><a class="nav-link" href="/popular">Best도서</a></li>
             <li class="nav-item"><a class="nav-link" href="/reviews">도서 서평</a></li>
             <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/myPage">MyPage</a></li>
+            <% if(session.logined){%>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/myPage">MyPage</a></li>
+            <%}%>
           </ul>
           <form class="d-flex">
             <% if(session.logined){%>
@@ -119,43 +126,16 @@
               <td><%= reviews[i].category %></td>
               <td><a href="/myPage/<%= reviews[i].no%>"><%= reviews[i].bookName %></a></td>
               <td><%= reviews[i].userId %></td>
-              <td><%= reviews[i].score %></td>
+              <td>
+                <%for(let j=0; j<reviews[i].score; j++ ){ %>
+                  <span>★</span>
+                <%}%>
+              </td>
             </tr>
         <% } %>
           </tbody>
         </table>
   </section>
-  <!-- <section>
-    <p>▶내가 작성한 댓글</p>
-    <table>
-      <thead>
-        <tr>
-          <th>No.</th>
-          <th>책제목</th>
-          <th>작성자</th>
-          <th>별점</th>
-        </tr>
-      </thead>
-      <tr>
-        <td>1</td>
-        <td>강아지똥</td>
-        <td>박선아</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>예제</td>
-        <td>예제</td>
-        <td>예제</td>
-        <td>예제</td>
-      </tr>
-      <tr>
-        <td>예제</td>
-        <td>예제</td>
-        <td>예제</td>
-        <td>예제</td>
-      </tr>
-    </table>
-  </section> -->
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Suna Website 2023</p>

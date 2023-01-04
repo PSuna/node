@@ -1,3 +1,5 @@
 const url = "/myPage"
 
-fetch(url)
+fetch(url) // get방식
+.then(res=>{});
+
