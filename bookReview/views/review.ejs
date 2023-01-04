@@ -58,9 +58,8 @@
       float: right;
       margin: 0 10px 10px 0;
     }
-    tbody a{
-      text-decoration: none;
-      color: black;
+    tbody tr:hover{
+      background-color: #ccc;
     }
   </style>
 </head>
@@ -131,10 +130,10 @@
       </thead>
       <tbody>
      <%for(let i = 0; i<reviews.length; i++){%>
-          <tr>
+          <tr onclick="location.href='/reviews/<%= reviews[i].no%>'" style="cursor:pointer;">
             <td><%= i+1 %></td>
             <td><%= reviews[i].category %></td>
-            <td><a href="/reviews/<%= reviews[i].no%>"><%= reviews[i].bookName %></a></td>
+            <td><%= reviews[i].bookName %></td>
             <td><%= reviews[i].userId %></td>
             <td>
               <%for(let j=0; j<reviews[i].score; j++ ){ %>

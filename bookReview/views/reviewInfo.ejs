@@ -1,188 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>도서리뷰게시판</title>
-  <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-  <!-- Bootstrap icons-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="/stylesheets/form.css" rel="stylesheet" />
-  <style>
-    #container {
-      text-align: center;
-      width: 100%;
-    }
-
-    section {
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
-
-    #search_form ul {
-      padding: 0px;
-      margin-top: 30px;
-    }
-
-    #search_form li {
-      list-style: none;
-      display: inline-block;
-    }
-
-    #search_form input {
-      width: 500px;
-      height: 40px;
-    }
-
-    .width_height {
-      width: 100px;
-      height: 40px;
-    }
-
-    table {
-      border-collapse: collapse;
-      margin-bottom: 10px;
-      width: 80%;
-    }
-
-    table thead {
-      background-color: #e2e2e2;
-    }
-
-    table th,td {
-      border: 1px solid gray;
-      text-align: center;
-      padding: 5px;
-    }
-    table th{
-      background-color: #e2e2e2;
-    }
-
-    #btnSearch {
-      padding: 0px;
-    }
-
-    #btnWritePost {
-      float: right;
-      margin: 0 10px 10px 0;
-    }
-
-    .flex_class {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    #picture_div {
-      width: 20%;
-      height: 204px;
-      margin-right: 5px;
-    }
-
-    #picture_div{
-      border: 1px solid black;
-    }
-    #picture_div img{
-      width: 100%;
-      height: 100%;
-    }
-
-    #bookContent{
-      margin-top: 5px;
-      width: 100%;
-    }
-
-    section button{
-      margin : 5px;
-      width: 100px;
-      padding: 20px;
-      border-radius: 20px;
-    }
-
-  </style>
-</head>
-
-<body>
-  <header>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="/main">도서리뷰게시판</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-            class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item"><a class="nav-link" href="/reviews">Best도서</a></li>
-            <li class="nav-item"><a class="nav-link" href="/reviews">도서 서평</a></li>
-            <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
-            <% if(session.logined){%>
-              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/myPage">MyPage</a></li>
-            <%}%>
-          </ul>
-          <form class="d-flex">
-            <% if(session.logined){%>
-                <span class ="nav-link">환영합니다. <%=session.userId%>님</span><button class="btn btn-outline-dark" type="button" id="btnHomeLogout">로그아웃</button>
-            <%}else{%>
-                <a href="./login.html"><button class="btn btn-outline-dark" type="button" id="btnHomeLogin">로그인</button></a>
-            <%}%>
-          </form>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <!-- Product section-->
-  <section>
-    <div id="container">
-      <h1>도서 서평</h1>
-      <form action="#" id="search_form">
-        <div class="flex_class">
-          <div id="picture_div">
-            <img src="<%=reviews.picture%>" alt="도서사진">
-          </div>
-            <table>
-              <tr>
-                <th>카테고리</th>
-                <td>
-                  <%=reviews.category%>
-                </td>
-              </tr>
-              <tr>
-                <th>도서명</th>
-                <td><%=reviews.bookName%></td>
-              </tr>
-              <tr>
-                <th>저자</th>
-                <td><%=reviews.writer%></td>
-              </tr>
-              <tr>
-                <th>별점</th>
-                <td>
-                  <% for(let i =0; i<reviews.score ; i++){ %>
-                    <span>★</span>
-                  <% } %>
-                </td>
-              </tr>
-            </table>
-        </div>
-        <textarea id="bookContent" name="bookContent" cols="30" rows="10" readonly><%=reviews.content%></textarea>
-        <button class="btn btn-outline-dark flex-shrink-0" type="button" id="btnBack" onclick="history.back()">뒤로가기</button>
-      </form>
-  </section>
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Suna Website 2023</p>
-    </div>
-  </div>
-  </footer>
-  <!-- Bootstrap core JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Core theme JS-->
-  <script src="/javascripts/client_reviews.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>도서리뷰게시판</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/stylesheets/form.css" rel="stylesheet" />
+        <style>
+            #book_img_div{
+                width: 400px;
+                height: 500px;
+            }
+            #book_img_div img{
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="/main">도서리뷰게시판</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="/popular">Best도서</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/reviews">도서 서평</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
+                        <% if(session.logined){%>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/myPage">MyPage</a></li>
+                        <%}%>
+                    </ul>
+                    <form class="d-flex">
+                        <% if(session.logined){%>
+                            <span class="nav-link">환영합니다. <%=session.userId%>님</span><button class="btn btn-outline-dark" type="button"
+                                id="btnHomeLogout">로그아웃</button>
+                            <%}else{%>
+                                <a href="./login.html"><button class="btn btn-outline-dark" type="button" id="btnHomeLogin">로그인</button></a>
+                                <%}%>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6" id="book_img_div"><img class="card-img-top mb-5 mb-md-0" src="<%=reviews.picture%>" alt="책사진"/></div>
+                    <div class="col-md-6">
+                        <div class="small mb-1"><%=reviews.category%></div>
+                        <h1 class="display-5 fw-bolder"><%=reviews.bookName%></h1>
+                        <div class="fs-5 mb-5">
+                            <span><%=reviews.writer%></span>
+                            <span class="small text-warning mb-2">
+                               <%for(let i =0; i<reviews.score; i++){%> 
+                                <span class="bi-star-fill"></span>
+                               <%}%>
+                            </span>
+                        </div>
+                        <p class="lead"><%=reviews.content%></p>
+                        <div class="d-flex">
+                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                좋아요
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/javascripts/client_reviews.js"></script>
+    </body>
 </html>

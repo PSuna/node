@@ -12,14 +12,16 @@
   <!-- Bootstrap icons-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="./stylesheets/form.css" rel="stylesheet" />
+  <link href="/stylesheets/form.css" rel="stylesheet" />
   <style>
-    h1{
+    #container {
       text-align: center;
+      width: 100%;
     }
 
     section {
       margin-top: 30px;
+      margin-bottom: 10px;
     }
 
     #search_form ul {
@@ -44,8 +46,8 @@
 
     table {
       border-collapse: collapse;
-      width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      width: 80%;
     }
 
     table thead {
@@ -53,11 +55,12 @@
     }
 
     table th,td {
+      border: 1px solid gray;
       text-align: center;
       padding: 5px;
     }
-    table tr{
-       border-bottom:1px solid gray;
+    table th{
+      background-color: #e2e2e2;
     }
 
     #btnSearch {
@@ -68,9 +71,39 @@
       float: right;
       margin: 0 10px 10px 0;
     }
-    tbody tr:hover{
-      background-color: #ccc;
+
+    .flex_class {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
     }
+
+    #picture_div {
+      width: 20%;
+      height: 204px;
+      margin-right: 5px;
+    }
+
+    #picture_div{
+      border: 1px solid black;
+    }
+    #picture_div img{
+      width: 100%;
+      height: 100%;
+    }
+
+    #bookContent{
+      margin-top: 5px;
+      width: 100%;
+    }
+
+    section button{
+      margin : 5px;
+      width: 100px;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
   </style>
 </head>
 
@@ -85,7 +118,7 @@
             class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item"><a class="nav-link" href="/popular">Best도서</a></li>
+            <li class="nav-item"><a class="nav-link" href="/reviews">Best도서</a></li>
             <li class="nav-item"><a class="nav-link" href="/reviews">도서 서평</a></li>
             <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
             <% if(session.logined){%>
@@ -106,45 +139,50 @@
   <!-- Product section-->
   <section>
     <div id="container">
-      <h1>마이 페이지</h1>
-      <p>▶내가 작성한 글</p>
-        <table>
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>카테고리</th>
-              <th>책제목</th>
-              <th>작성자</th>
-              <th>별점</th>
-            </tr>
-          </thead>
-          <tbody>
-        <% for(let i =0; i <reviews.length; i++){ %>
-            <tr onclick="location.href='/myPage/<%= reviews[i].no%>'" style="cursor:pointer;">
-              <td> <%= i+1 %>  </td>
-              <td><%= reviews[i].category %></td>
-              <td><%= reviews[i].bookName %></td>
-              <td><%= reviews[i].userId %></td>
-              <td>
-                <%for(let j=0; j<reviews[i].score; j++ ){ %>
-                  <span>★</span>
-                <%}%>
-              </td>
-            </tr>
-        <% } %>
-          </tbody>
-        </table>
+      <h1>도서 서평</h1>
+      <form action="#" id="search_form">
+        <div class="flex_class">
+          <div id="picture_div">
+            <img src="<%=reviews.picture%>" alt="도서사진">
+          </div>
+            <table>
+              <tr>
+                <th>카테고리</th>
+                <td>
+                  <%=reviews.category%>
+                </td>
+              </tr>
+              <tr>
+                <th>도서명</th>
+                <td><%=reviews.bookName%></td>
+              </tr>
+              <tr>
+                <th>저자</th>
+                <td><%=reviews.writer%></td>
+              </tr>
+              <tr>
+                <th>별점</th>
+                <td>
+                  <% for(let i =0; i<reviews.score ; i++){ %>
+                    <span>★</span>
+                  <% } %>
+                </td>
+              </tr>
+            </table>
+        </div>
+        <textarea id="bookContent" name="bookContent" cols="30" rows="10" readonly><%=reviews.content%></textarea>
+        <button class="btn btn-outline-dark flex-shrink-0" type="button" id="btnBack" onclick="history.back()">뒤로가기</button>
+      </form>
   </section>
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Suna Website 2023</p>
-      </div>
-    </footer>
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Suna Website 2023</p>
+    </div>
   </div>
+  </footer>
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
-  <script src="./javascripts/client_myPage.js"></script>
+  <script src="/javascripts/client_reviews.js"></script>
 </body>
-
 </html>
