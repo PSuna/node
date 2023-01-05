@@ -16,7 +16,7 @@ function Login(){
     .then(res => {
       if(res.result){ // 로그인 성공시 true
         alert("로그인 성공")
-        location.assign("./main"); // 이동
+        location.assign("/main"); // 이동
       }else{ // 로그인 실패시
         alert("아이디와 비밀번호가 틀렸습니다.");
         userId.value = "";

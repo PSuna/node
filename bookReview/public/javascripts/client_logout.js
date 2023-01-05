@@ -7,7 +7,7 @@ function Logout(){
       fetch(url2) // get방식 조회
       .then(res=>{ // 로그아웃이 됬다면
         alert("로그아웃 되셨습니다.");
-        location.assign("./main");
+        location.assign("/main");
       })
     })
   }

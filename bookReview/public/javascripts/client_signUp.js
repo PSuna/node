@@ -20,7 +20,7 @@ function insert_Member(){ // 회원가입 함수
                   }, 
         body:JSON.stringify(data)}) // json형태(string)여야함
         .then(res=>{
-          alert("회원가입이 완료되었습니다.");
+          alert("회원가입이 완료되었습니다. 다시 로그인해주세요");
           location.assign("/main");
         })
      }else{ // 비밀번호가 같지않다면
