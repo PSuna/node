@@ -26,5 +26,19 @@ router.get('/:no', function(req, res, next) {
     res.render("reviewInfo",{session:req.session, reviews : results[0]});
   });
 });
+
+
+router.post("/",(req,res)=>{
+  let sql = "select * from reviews where bookName like ?";
+  let data = "%" + req.body.book_name + "%";
+
+  pool.query(sql, data, function(err, results, fields){  // 여기서 results의 형태는 object임
+    if(err){ // 에러가 있다면 출력
+      console.log(err);
+    }
+    res.json(results); // [{},{},{}] 여러건이 나옴
+  });
+
+});
   
 module.exports = router;
