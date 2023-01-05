@@ -130,7 +130,7 @@
           <th>별점</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="list">
      <%for(let i = 0; i<reviews.length; i++){%>
           <tr onclick="location.href='/reviews/<%= reviews[i].no%>'" style="cursor:pointer;">
             <td><%= i+1 %></td>
