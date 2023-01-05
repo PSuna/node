@@ -43,7 +43,7 @@
             <span class="nav-link">환영합니다. <%=session.userId%>님</span><button class="btn btn-outline-dark" type="button"
               id="btnHomeLogout">로그아웃</button>
           <%}else{%>
-              <a href="./login.html"><button class="btn btn-outline-dark" type="button" id="btnHomeLogin">로그인</button></a>
+              <a href="/login.html"><button class="btn btn-outline-dark" type="button" id="btnHomeLogin">로그인</button></a>
           <%}%>
         </form>
       </div>
@@ -73,7 +73,7 @@
                 <div class="text-center">
                   <!-- Product name-->
                   <h5 class="fw-bolder"><%=books[i].bookName%></h5>
-                  <div class="mb-2">-<%=books[i].writer%></div>
+                  <div class="mb-2">- <%=books[i].writer%></div>
                   <!-- Product price-->
                   <div class="d-flex justify-content-center small text-warning mb-2">
                     <div class="bi-star-fill"></div>
@@ -86,7 +86,7 @@
               </div>
               <!-- Product actions-->
               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">자세히보기</a></div>
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/reviews/<%=books[i].no%>">자세히보기</a></div>
               </div>
             </div>
           </div>

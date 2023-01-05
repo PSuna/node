@@ -6,9 +6,18 @@ var router = express.Router();
 
   // 새로 추가한 부분
   //파일을 저장할 디렉토리 설정 (현재 위치에 uploads라는 폴더가 생성되고 하위에 파일이 생성된다.)
-  const upload = multer({ 
+  
+  // 예담에서
+  /* const upload = multer({ 
       dest: "D:\\node\\bookReview\\public\\images", // 이미지 파일이 다운로드 되는 경로
+  }) */
+
+
+  //집에서
+  const upload = multer({ 
+    dest: "C:\\국비_예담\\node\\bookReview\\public\\images", // 이미지 파일이 다운로드 되는 경로
   })
+  
 
   router.post('/', upload.single('picture_file'), (req, res, next) => {
     const { fieldname, originalname, encoding, mimetype, destination, filename, path, size } = req.file

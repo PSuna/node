@@ -131,14 +131,14 @@
         </tr>
       </thead>
       <tbody id="list">
-     <%for(let i = 0; i<reviews.length; i++){%>
-          <tr onclick="location.href='/reviews/<%= reviews[i].no%>'" style="cursor:pointer;">
+     <%for(let i = 0; i<result.length; i++){%>
+          <tr onclick="location.href='/reviews/<%=result[i].no%>'" style="cursor:pointer;">
             <td><%= i+1 %></td>
-            <td><%= reviews[i].category %></td>
-            <td><%= reviews[i].bookName %></td>
-            <td><%= reviews[i].userId %></td>
+            <td><%= result[i].category %></td>
+            <td><%= result[i].bookName %></td>
+            <td><%= result[i].userId %></td>
             <td>
-              <%for(let j=0; j<reviews[i].score; j++ ){ %>
+              <%for(let j=0; j<result[i].score; j++ ){ %>
               <span>★</span>
               <%}%>
             </td>

@@ -5,12 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require("express-session");
 
-const cors = require("cors") // cors 추가
-const multer  = require('multer') // multer 추가
-
 var mainRouter = require('./routes/main');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//var indexRouter = require('./routes/index');
+//var usersRouter = require('./routes/users');
 var membersRouter = require('./routes/members');
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');  
@@ -18,6 +15,7 @@ var reviewsRouter = require('./routes/reviews');
 var reviewPostRouter = require('./routes/reviewPost'); 
 var myPageRouter = require('./routes/myPage'); 
 var popularRouter = require('./routes/popular');
+var searchRouter = require('./routes/search');
 
 var app = express();
 
@@ -30,8 +28,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(cors())// Test를 하기 위해서 세팅 "실제 서버에 배포할 때는 아이피를 설정 해야된다."
 
 //세션
 app.use(
@@ -48,8 +44,9 @@ app.use(
   })
 );
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter); 
+//app.use('/', indexRouter);
+//app.use('/users', usersRouter); 
+
 app.use('/main',mainRouter);
 app.use('/members', membersRouter);
 app.use('/login', loginRouter);
@@ -58,6 +55,8 @@ app.use('/reviews', reviewsRouter);
 app.use('/reviewPost', reviewPostRouter);
 app.use('/myPage', myPageRouter);
 app.use('/popular', popularRouter);
+app.use('/search', searchRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
