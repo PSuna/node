@@ -117,7 +117,7 @@
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="/main">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="/popular">Best도서</a></li>
             <li class="nav-item"><a class="nav-link" href="/reviews">도서 서평</a></li>
-            <li class="nav-item"><a class="nav-link" href="#!">독서챌린지</a></li>
+            <li class="nav-item"><a class="nav-link" href="calendar.html">독서챌린지</a></li>
           </ul>
         </div>
       </div>
@@ -127,10 +127,10 @@
   <section>
     <div id="container">
       <h1>도서 서평 - 게시글 작성</h1>
-      <form action="#" id="search_form">
+      <form action="/reviewPost" enctype="multipart/form-data" method="post" id="search_form" name="search_form">
         <div class="flex_class">
           <div id="picture_div">
-            <input onchange="readURL(this);" type="file" name="book_picture" id="book_picture">
+            <input onchange="readURL(this);" type="file" name="picture_file" id="book_picture">
             <img id="preview" />
           </div>
             <table>
@@ -147,16 +147,16 @@
               </tr>
               <tr>
                 <th>도서명</th>
-                <td><input type="text" name="text" id="bookTitle" name ="bookTitle" style="width: 100%; border: 0;"></td>
+                <td><input type="text"  id="bookTitle" name ="bookName" style="width: 100%; border: 0;"></td>
               </tr>
               <tr>
                 <th>저자</th>
-                <td><input type="text" name="text" id="bookWriter" name="bookWriter" style="width: 100%; border: 0;"></td>
+                <td><input type="text" id="bookWriter" name="writer" style="width: 100%; border: 0;"></td>
               </tr>
               <tr>
                 <th>별점</th>
                 <td>
-                  <select class="width_height" name="bookGood" id="bookGood" style="width: 100%; border: 0;">
+                  <select class="width_height" name="score" id="bookGood" style="width: 100%; border: 0;">
                     <option value="5">★★★★★</option>
                     <option value="4">★★★★</option>
                     <option value="3">★★★</option>
@@ -167,9 +167,9 @@
               </tr>
             </table>
         </div>
-        <textarea id="bookContent" name="bookContent" cols="30" rows="10" placeholder="내용을 입력해주세요"></textarea>
+        <textarea id="bookContent" name="content" cols="30" rows="10" placeholder="내용을 입력해주세요"></textarea>
         <button class="btn btn-outline-dark flex-shrink-0" type="button" id="cancel_review">취소</button>
-        <button class="btn btn-outline-dark flex-shrink-0" type="button" id="post_review">등록</button>
+        <button class="btn btn-outline-dark flex-shrink-0" type="submit" id="post_review">등록</button><!--수정-->
       </form>
   </section>
   <footer class="py-5 bg-dark">

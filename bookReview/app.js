@@ -3,8 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 const session = require("express-session");
+
+const cors = require("cors") // cors 추가
+const multer  = require('multer') // multer 추가
 
 var mainRouter = require('./routes/main');
 var indexRouter = require('./routes/index');
@@ -28,6 +30,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors())// Test를 하기 위해서 세팅 "실제 서버에 배포할 때는 아이피를 설정 해야된다."
 
 //세션
 app.use(
