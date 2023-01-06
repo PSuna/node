@@ -32,7 +32,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link" href="/popular">Best도서</a></li>
                         <li class="nav-item"><a class="nav-link" href="/reviews">도서 서평</a></li>
-                        <li class="nav-item"><a class="nav-link" href="calendar.html">독서챌린지</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/calendar.html">독서챌린지</a></li>
                         <% if(session.logined){%>
                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="/myPage">MyPage</a></li>
                         <%}%>
@@ -70,7 +70,7 @@
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                 좋아요
                             </button>
-                            <button class="btn btn-outline-dark flex-shrink-0" onclick="history.back()" style="margin-left: 10px;" type="button">
+                            <button class="btn btn-outline-dark flex-shrink-0" onclick="location.href='/reviews'" style="margin-left: 10px;" type="button">
                                 뒤로가기
                             </button>
                         </div>
@@ -85,7 +85,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="/javascripts/client_reviews.js"></script>
+        <!-- <script src="/javascripts/client_reviews.js"></script> -->
         <script src="/javascripts/client_logout.js"></script>
     </body>
 </html>

@@ -4,16 +4,6 @@ let books = [];
 const url = 'http://api.kcisa.kr/openapi/service/rest/meta13/getNLSF0401?serviceKey=d2252ebd-bfd4-44d8-b005-ff9a8878b9a8&numOfRows=10&pageNo=1'; /*URL*/
 const post_url = "/main"
 
-function post_data(books){ // DB에 저장하는 함수
-  fetch(post_url, { // 공공데이터 포털에서 받은 정보를 DB에 저장
-                    method : "POST",
-                    headers : {
-                              "Content-type":"application/json"
-                              },
-                    body:JSON.stringify(books)}) // json형태(string)여야함
-  .then(res=>{});
-  }
-
 fetch(url) // get방식 조회
  .then(res => res.text()) //text로 가져옴
  .then(res => {
@@ -40,6 +30,17 @@ fetch(url) // get방식 조회
     post_data(books[i]); // DB에 저장
   }
  })
+
+function post_data(books){ // DB에 저장하는 함수
+  fetch(post_url, { // 공공데이터 포털에서 받은 정보를 DB에 저장
+                    method : "POST",
+                    headers : {
+                              "Content-type":"application/json"
+                              },
+                    body:JSON.stringify(books)}) // json형태(string)여야함
+  .then(res=>{});
+  }
+
 
  function popular_html(books){
   let html = `<div class="col mb-5 div_piece">
